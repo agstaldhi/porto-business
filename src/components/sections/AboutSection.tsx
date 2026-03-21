@@ -3,19 +3,21 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link2, Layers, Zap, PenTool } from "lucide-react";
+import meImg from "@/assets/me_comp.png";
 
-export default function About() {
+export function AboutSection({ id }: { id?: string }) {
   return (
-    <div className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-5xl mx-auto">
+    <section id={id} className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-5xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center mb-24 md:mb-32">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="relative aspect-[4/5] w-full max-w-md mx-auto overflow-hidden rounded-2xl border border-border bg-muted">
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+              src={meImg}
               alt="Portrait of the creator"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
@@ -24,7 +26,7 @@ export default function About() {
             />
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background/90 to-transparent"></div>
             <div className="absolute bottom-6 left-6 right-6">
-              <h1 className="text-3xl font-bold font-sans">Alex Mercer</h1>
+              <h1 className="text-3xl font-bold font-sans">Aldhi</h1>
               <p className="text-muted-foreground mt-1">Creative Director & Developer</p>
             </div>
           </div>
@@ -32,7 +34,8 @@ export default function About() {
 
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="space-y-6 lg:max-w-lg"
         >
@@ -107,6 +110,6 @@ export default function About() {
           ))}
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 }

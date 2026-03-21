@@ -6,10 +6,10 @@ import Image from "next/image";
 const projects = [
   {
     id: 1,
-    title: "Cinematic Reel 2024",
+    title: "Music Video 2024",
     category: "Video",
     type: "video",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&rel=0",
+    src: "https://www.youtube.com/embed/dTfl_e4sAs0?si=Fa5LclSUIj705i5N",
   },
   {
     id: 2,
@@ -20,17 +20,17 @@ const projects = [
   },
   {
     id: 3,
-    title: "E-Commerce Platform",
+    title: "Portofolio Website",
     category: "Web",
     type: "image",
     src: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1964&auto=format&fit=crop",
   },
   {
     id: 4,
-    title: "Brand Campaign",
+    title: "Music Video 2024",
     category: "Video",
     type: "video",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&rel=0", // Placeholder
+    src: "https://www.youtube.com/embed/iDHujuA0v1o?si=07Dqc-EKa5PPFevn", // Placeholder
   },
   {
     id: 5,
@@ -41,23 +41,24 @@ const projects = [
   },
   {
     id: 6,
-    title: "SaaS Dashboard",
+    title: "E-commerce website",
     category: "Web",
     type: "image",
     src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
   },
 ];
 
-export default function Portfolio() {
+export function PortfolioSection({ id }: { id?: string }) {
   return (
-    <div className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-7xl mx-auto">
+    <section id={id} className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Selected Works.</h1>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 text-[#f0f0f0]">Selected Works.</h2>
         <p className="text-xl text-muted-foreground max-w-2xl">
           A showcase of cross-disciplinary projects, from visual storytelling to interactive web experiences.
         </p>
@@ -68,15 +69,15 @@ export default function Portfolio() {
           const categoryProjects = projects.filter((p) => p.category === category);
           
           return (
-            <section key={category}>
+            <div key={category}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <div className="flex items-center gap-4 mb-8">
-                  <h2 className="text-2xl font-semibold">{category}</h2>
+                  <h3 className="text-2xl font-semibold text-[#f0f0f0]">{category}</h3>
                   <div className="flex-1 h-px bg-border"></div>
                 </div>
 
@@ -110,17 +111,17 @@ export default function Portfolio() {
                         )}
                       </div>
                       <div className="flex justify-between items-center">
-                        <h3 className="text-lg font-medium">{project.title}</h3>
+                        <h4 className="text-lg font-medium text-gray-200">{project.title}</h4>
                         <span className="text-sm text-muted-foreground uppercase tracking-wider">{project.category}</span>
                       </div>
                     </motion.div>
                   ))}
                 </div>
               </motion.div>
-            </section>
+            </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

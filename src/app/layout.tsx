@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Creative Studio | Selected Works",
+  title: "MonoHex Creative",
   description: "Portfolio of a one-man creative studio specializing in video editing, photography, and web development.",
 };
 

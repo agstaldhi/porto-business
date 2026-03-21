@@ -27,6 +27,10 @@ body {
   letter-spacing: -0.01em;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ::selection {
   background-color: var(--foreground);
   color: var(--background);

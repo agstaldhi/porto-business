@@ -2,97 +2,88 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { ArrowRight, Video, Camera, Code } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+
+import { AboutSection } from "@/components/sections/AboutSection";
+import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4">
+    <div className="bg-[#080510] text-[#f0f0f0] font-sans selection:bg-purple-500/30 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="w-full max-w-5xl py-20 md:py-32 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="inline-flex items-center rounded-full border border-border px-3 py-1 text-sm font-medium mb-8">
-            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
-            Available for new projects
-          </div>
-        </motion.div>
+      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4">
+        {/* Background glowing effects */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(120,80,200,0.15)_0%,rgba(0,0,0,0)_70%)] pointer-events-none" />
+        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-purple-500/10 blur-[120px] pointer-events-none" />
         
-        <motion.h1
-          className="text-5xl md:text-7xl font-bold tracking-tighter mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          One-man creative <span className="text-muted-foreground">studio.</span>
-        </motion.h1>
-
-        <motion.p
-          className="text-xl text-muted-foreground max-w-2xl mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          Crafting exceptional digital experiences through video editing, photography, and full-stack web development. From concept to execution.
-        </motion.p>
-
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <Button asChild size="lg" className="h-12 px-8 text-base">
-            <Link href="/portfolio">
-              View work <ArrowRight className="ml-2 h-4 w-4" />
+        <main className="z-10 flex flex-col items-center text-center max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link 
+              href="#about" 
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-light text-gray-300 backdrop-blur-sm transition-colors hover:bg-white/10 mb-8 md:mb-10"
+            >
+              Welcome to Our Platform <ChevronRight className="ml-2 h-3.5 w-3.5 text-gray-400" />
             </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="h-12 px-8 text-base">
-            <Link href="/contact">Get in touch</Link>
-          </Button>
-        </motion.div>
+          </motion.div>
+
+          <motion.h1 
+            className="mb-8 text-5xl font-medium tracking-tight text-[#f0f0f0] sm:text-6xl md:text-7xl lg:text-[80px] leading-[1.1]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Transform your ideas into<br />
+            <span className="bg-gradient-to-r from-[#d6b4ff] via-[#fcb6d0] to-[#ffdfb0] bg-clip-text text-transparent">
+              beautiful digital experiences
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            className="mb-12 max-w-2xl text-lg text-[#9ca3af] md:text-xl font-light leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Transform your ideas into reality with our comprehensive suite of development tools and resources.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-b from-purple-500/40 to-transparent opacity-70 blur-md transition duration-500 group-hover:opacity-100"></div>
+              <Link 
+                href="#about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="relative flex items-center justify-center rounded-full bg-[#100b1a] px-8 py-3.5 text-sm font-medium text-white ring-1 ring-white/10 transition-all hover:bg-[#150f22] hover:ring-white/20"
+              >
+                Get Started
+              </Link>
+            </div>
+          </motion.div>
+        </main>
       </section>
 
-      {/* Services Highlights */}
-      <section className="w-full max-w-5xl py-20">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {/* Card 1 */}
-          <div className="flex flex-col space-y-4 p-6 rounded-2xl border border-border bg-card/50 transition-colors hover:bg-muted/50">
-            <div className="h-12 w-12 rounded-lg bg-foreground/10 flex items-center justify-center border border-border">
-              <Video className="h-6 w-6 text-foreground" />
-            </div>
-            <h3 className="text-xl font-semibold">Video Editing</h3>
-            <p className="text-muted-foreground leading-relaxed">Cinematic cuts, engaging social content, and professional color grading that tells your story.</p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="flex flex-col space-y-4 p-6 rounded-2xl border border-border bg-card/50 transition-colors hover:bg-muted/50">
-            <div className="h-12 w-12 rounded-lg bg-foreground/10 flex items-center justify-center border border-border">
-              <Camera className="h-6 w-6 text-foreground" />
-            </div>
-            <h3 className="text-xl font-semibold">Photography</h3>
-            <p className="text-muted-foreground leading-relaxed">Striking portraits, product shots, and event coverage with a distinct, modern eye.</p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="flex flex-col space-y-4 p-6 rounded-2xl border border-border bg-card/50 transition-colors hover:bg-muted/50">
-            <div className="h-12 w-12 rounded-lg bg-foreground/10 flex items-center justify-center border border-border">
-              <Code className="h-6 w-6 text-foreground" />
-            </div>
-            <h3 className="text-xl font-semibold">Web Development</h3>
-            <p className="text-muted-foreground leading-relaxed">High-performance, responsive websites built with Next.js and modern technologies.</p>
-          </div>
-        </motion.div>
-      </section>
+      {/* Embedded Sections */}
+      <AboutSection id="about" />
+      <PortfolioSection id="portfolio" />
+      <ServicesSection id="services" />
+      <ContactSection id="contact" />
     </div>
   );
 }

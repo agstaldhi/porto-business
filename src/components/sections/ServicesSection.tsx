@@ -35,16 +35,17 @@ const services = [
   },
 ];
 
-export default function Services() {
+export function ServicesSection({ id }: { id?: string }) {
   return (
-    <div className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-5xl mx-auto">
+    <section id={id} className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-5xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="mb-16 md:mb-24 text-center"
       >
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Expertise.</h1>
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-[#f0f0f0]">Expertise.</h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           I focus on delivering tangible business outcomes through premium creative output, not just checking off feature lists.
         </p>
@@ -62,16 +63,16 @@ export default function Services() {
           >
             <div className="flex-1 space-y-4">
               <div className="text-sm font-mono text-muted-foreground mb-2">0{index + 1}</div>
-              <h2 className="text-3xl font-bold">{service.title}</h2>
+              <h3 className="text-3xl font-bold text-[#f0f0f0]">{service.title}</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {service.description}
               </p>
             </div>
             
             <div className="flex-1 bg-card/50 border border-border rounded-2xl p-8">
-              <h3 className="uppercase tracking-wider text-sm font-semibold mb-6 flex items-center text-muted-foreground">
+              <h4 className="uppercase tracking-wider text-sm font-semibold mb-6 flex items-center text-muted-foreground">
                 The Outcomes
-              </h3>
+              </h4>
               <ul className="space-y-4">
                 {service.outcomes.map((outcome, i) => (
                   <motion.li
@@ -79,10 +80,10 @@ export default function Services() {
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                     className="flex items-start gap-3"
                   >
-                    <CheckCircle2 className="h-5 w-5 text-foreground shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-gray-300 shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{outcome}</span>
                   </motion.li>
                 ))}
@@ -99,16 +100,16 @@ export default function Services() {
         transition={{ duration: 0.5 }}
         className="mt-32 text-center bg-muted/50 rounded-3xl p-12 lg:p-20 border border-border"
       >
-        <h2 className="text-3xl font-bold mb-4">Ready to elevate your brand?</h2>
+        <h3 className="text-3xl font-bold mb-4 text-[#f0f0f0]">Ready to elevate your brand?</h3>
         <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
           Let's discuss how my full-stack creative approach can solve your specific business challenges.
         </p>
         <Button asChild size="lg" className="h-12 px-8">
-          <Link href="/contact">
+          <Link href="#contact">
             Start a conversation <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </motion.div>
-    </div>
+    </section>
   );
 }

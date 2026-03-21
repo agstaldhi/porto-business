@@ -5,10 +5,9 @@ import { Mail, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import Link from "next/link";
 import { useState } from "react";
 
-export default function Contact() {
+export function ContactSection({ id }: { id?: string }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -52,14 +51,15 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-6xl mx-auto">
+    <section id={id} className="flex flex-col min-h-screen px-4 py-16 md:py-24 max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="mb-16 md:mb-24 text-center"
       >
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Let's talk.</h1>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 text-[#f0f0f0]">Let's talk.</h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Whether you have a specific project in mind or just want to explore possibilities, I'm here to help.
         </p>
@@ -69,12 +69,13 @@ export default function Contact() {
         {/* Contact Info CTA */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="lg:col-span-2 space-y-8"
         >
           <div>
-            <h3 className="text-2xl font-semibold mb-2">Direct Contact</h3>
+            <h3 className="text-2xl font-semibold mb-2 text-[#f0f0f0]">Direct Contact</h3>
             <p className="text-muted-foreground mb-8">
               Prefer to reach out directly? Choose your preferred channel below. I typically respond within 24 hours.
             </p>
@@ -86,10 +87,10 @@ export default function Contact() {
               className="flex items-center p-4 rounded-xl border border-border bg-card/50 hover:bg-muted transition-colors group"
             >
               <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-foreground/10 mr-4 group-hover:bg-foreground group-hover:text-background transition-colors">
-                <Mail className="h-5 w-5" />
+                <Mail className="h-5 w-5 text-gray-200" />
               </div>
               <div>
-                <p className="font-medium">Email Me</p>
+                <p className="font-medium text-gray-200">Email Me</p>
                 <p className="text-sm text-muted-foreground">businessagst@gmail.com</p>
               </div>
             </a>
@@ -104,7 +105,7 @@ export default function Contact() {
                 <MessageCircle className="h-5 w-5" />
               </div>
               <div>
-                <p className="font-medium">WhatsApp</p>
+                <p className="font-medium text-gray-200">WhatsApp</p>
                 <p className="text-sm text-muted-foreground">085655761600</p>
               </div>
             </a>
@@ -114,12 +115,13 @@ export default function Contact() {
         {/* Contact Form */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="lg:col-span-3"
         >
-          <div className="rounded-2xl border border-border bg-card p-6 md:p-10 shadow-sm">
-            <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+          <div className="rounded-2xl border border-border bg-card/30 backdrop-blur-sm p-6 md:p-10 shadow-sm">
+            <h3 className="text-2xl font-semibold mb-6 text-[#f0f0f0]">Send a Message</h3>
             
             {isSubmitted ? (
               <motion.div
@@ -130,7 +132,7 @@ export default function Contact() {
                 <div className="h-16 w-16 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center mb-4">
                   <Send className="h-8 w-8" />
                 </div>
-                <h4 className="text-2xl font-bold">Message Sent!</h4>
+                <h4 className="text-2xl font-bold text-gray-100">Message Sent!</h4>
                 <p className="text-muted-foreground">
                   Thanks for reaching out. I'll get back to you shortly.
                 </p>
@@ -146,40 +148,40 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    <label htmlFor="name" className="text-sm font-medium text-gray-300 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       Name
                     </label>
-                    <Input id="name" name="name" placeholder="John Doe" required />
+                    <Input id="name" name="name" placeholder="John Doe" required className="bg-background/50 border-white/10" />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    <label htmlFor="email" className="text-sm font-medium text-gray-300 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       Email
                     </label>
-                    <Input id="email" name="email" type="email" placeholder="john@company.com" required />
+                    <Input id="email" name="email" type="email" placeholder="john@company.com" required className="bg-background/50 border-white/10" />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  <label htmlFor="subject" className="text-sm font-medium text-gray-300 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                     Subject
                   </label>
-                  <Input id="subject" name="subject" placeholder="Project Inquiry: New Website" required />
+                  <Input id="subject" name="subject" placeholder="Project Inquiry: New Website" required className="bg-background/50 border-white/10" />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  <label htmlFor="message" className="text-sm font-medium text-gray-300 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                     Message
                   </label>
                   <Textarea
                     id="message"
                     name="message"
                     placeholder="Tell me about your project, timeline, and goals..."
-                    className="min-h-[150px] resize-y"
+                    className="min-h-[150px] bg-background/50 border-white/10 resize-y"
                     required
                   />
                 </div>
 
-                <Button type="submit" className="w-full h-12 text-base" disabled={isSubmitting}>
+                <Button type="submit" className="w-full h-12 text-base text-black bg-white hover:bg-gray-200" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <span className="flex items-center">
                       <motion.div
@@ -200,6 +202,6 @@ export default function Contact() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
