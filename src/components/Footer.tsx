@@ -9,7 +9,7 @@ export function Footer() {
           Built by <span className="font-medium text-foreground">MonoHex</span>. The source code is available on GitHub.
         </p>
         <div className="flex items-center space-x-4">
-          <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="https://www.instagram.com/mono.hex/" className="text-muted-foreground hover:text-foreground transition-colors">
             <Instagram className="h-4 w-4" />
             <span className="sr-only">Instagram</span>
           </Link>
@@ -17,7 +17,7 @@ export function Footer() {
             <Twitter className="h-4 w-4" />
             <span className="sr-only">Twitter</span>
           </Link>
-          <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="https://linkedin.com/in/agstaldhi/" className="text-muted-foreground hover:text-foreground transition-colors">
             <Linkedin className="h-4 w-4" />
             <span className="sr-only">LinkedIn</span>
           </Link>
