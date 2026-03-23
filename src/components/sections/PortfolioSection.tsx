@@ -2,6 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import gumul from "@/assets/gumul.webp";
+import beach from "@/assets/beach.webp";
+import portofolio from "@/assets/portweb.webp";
+import comic from "@/assets/comicweb.webp";
 
 const projects = [
   {
@@ -16,14 +20,14 @@ const projects = [
     title: "Urban Architecture",
     category: "Photography",
     type: "image",
-    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+    src: gumul,
   },
   {
     id: 3,
     title: "Portofolio Website",
     category: "Web",
     type: "image",
-    src: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1964&auto=format&fit=crop",
+    src: portofolio,
   },
   {
     id: 4,
@@ -34,17 +38,17 @@ const projects = [
   },
   {
     id: 5,
-    title: "Portrait Series",
+    title: "Landscape Series",
     category: "Photography",
     type: "image",
-    src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop",
+    src: beach,
   },
   {
     id: 6,
-    title: "E-commerce website",
+    title: "Notes website",
     category: "Web",
     type: "image",
-    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    src: comic,
   },
 ];
 
@@ -95,7 +99,7 @@ export function PortfolioSection({ id }: { id?: string }) {
                         {project.type === "video" ? (
                           <iframe
                             className="absolute inset-0 w-full h-full pointer-events-none"
-                            src={project.src}
+                            src={project.src as string}
                             title={project.title}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
